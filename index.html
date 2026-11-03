@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b12">
+  <title>Placar. — Jogos de Hoje, Horários e Onde Assistir</title>
+  <meta name="description" content="Agenda dos jogos de hoje, 3 de novembro de 2026: horários, estádios e canais de transmissão do Brasileirão, Copa do Brasil, Champions League e mais.">
+  <meta property="og:title" content="Placar. — Jogos de Hoje">
+  <meta property="og:description" content="Todos os jogos do dia, horários e onde assistir. Feito para a torcida.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23c6ff45'/%3E%3Ccircle cx='32' cy='32' r='16' fill='%23070b12'/%3E%3Cpath d='M32 19l7.5 5.4-2.9 8.8h-9.2l-2.9-8.8L32 19Z' fill='%23c6ff45'/%3E%3Cpath d='M32 16v3M20 26l5.6 1M44 26l-5.6 1M24 40l3.4-6M40 40l-3.4-6' stroke='%23c6ff45' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Placar — início">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M12 7.2l4.3 3.1-1.6 5H9.3l-1.6-5L12 7.2Z" fill="currentColor"/>
+            <path d="M12 3v4.2M3.6 9.2l4.1 1.1M20.4 9.2l-4.1 1.1M6.7 19.1l2.6-3.8M17.3 19.1l-2.6-3.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-copy">
+          <span class="brand-title">Placar<span>.</span></span>
+          <span class="brand-sub">Agenda do futebol</span>
+        </span>
+      </a>
+
+      <nav class="nav" id="menu-principal" aria-label="Navegação principal">
+        <a href="#agenda">Jogos de hoje</a>
+        <a href="#canais">Onde assistir</a>
+        <a href="#agenda" data-filter-link="brasil">Times brasileiros</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="clock" title="Horário de Brasília">
+          <span class="clock-dot" aria-hidden="true"></span>
+          <span class="clock-label">Brasília</span>
+          <strong id="relogio">--:--</strong>
+        </div>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-controls="menu-principal" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <div class="topline">
+      <div class="container topline-inner">
+        <div class="topline-group">
+          <span class="topline-date">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M8 3v4M16 3v4M3.5 9.5h17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <strong id="data-topo">Terça-feira, 3 de novembro de 2026</strong>
+          </span>
+          <span class="topline-divider" aria-hidden="true"></span>
+          <span><strong id="total-jogos">8</strong> jogos no dia</span>
+          <span class="topline-divider hide-sm" aria-hidden="true"></span>
+          <span class="hide-sm"><strong id="total-brasil">5</strong> com times brasileiros</span>
+        </div>
+        <div class="topline-group topline-right">
+          <span class="topline-live" id="topline-status"><span class="live-dot" aria-hidden="true"></span> Agenda de hoje</span>
+          <span class="topline-divider hide-sm" aria-hidden="true"></span>
+          <span class="hide-sm">Horário de Brasília</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="hero-section" aria-labelledby="titulo-principal">
+      <div class="container">
+        <h1 class="sr-only" id="titulo-principal">Jogos de hoje — horários e onde assistir</h1>
+        <div class="hero-shell" id="hero-shell">
+          <div class="hero-slides" id="hero-slides"></div>
+          <div class="hero-nav" role="group" aria-label="Navegação dos destaques">
+            <button type="button" id="hero-prev" aria-label="Destaque anterior">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <span class="hero-counter" id="hero-counter" aria-live="polite"><strong>01</strong> / 03</span>
+            <button type="button" id="hero-next" aria-label="Próximo destaque">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <div class="hero-progress" aria-hidden="true"><span id="hero-progress-bar"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section agenda-section" id="agenda" aria-labelledby="titulo-agenda">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-heading">
+            <span class="eyebrow">Agenda do dia</span>
+            <h2 class="section-title" id="titulo-agenda">Jogos de hoje</h2>
+            <p class="section-sub">Todos os horários no fuso de Brasília. Escolha seu time e veja onde assistir.</p>
+          </div>
+          <div class="next-pill" id="next-pill">
+            <span class="next-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5V12l3 1.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <div class="next-copy">
+              <span class="next-label" id="next-label">Próximo jogo</span>
+              <strong class="next-match" id="next-match">Carregando agenda</strong>
+            </div>
+            <span class="next-time" id="next-countdown">--:--:--</span>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <div class="tabs" role="tablist" aria-label="Filtrar por situação">
+            <button class="tab is-active" type="button" role="tab" aria-selected="true" data-filter="todos">
+              Todos <span class="count">8</span>
+            </button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-filter="aovivo">
+              Ao vivo <span class="count">0</span>
+            </button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-filter="proximo">
+              Próximos <span class="count">0</span>
+            </button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-filter="encerrado">
+              Encerrados <span class="count">0</span>
+            </button>
+          </div>
+          <div class="filters">
+            <label class="select-wrap">
+              <span class="sr-only">Filtrar por competição</span>
+              <select id="filtro-competicao">
+                <option value="todas">Todas as competições</option>
+              </select>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </label>
+            <label class="select-wrap">
+              <span class="sr-only">Filtrar por canal</span>
+              <select id="filtro-canal">
+                <option value="todos">Todos os canais</option>
+              </select>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </label>
+            <label class="check-filter">
+              <input type="checkbox" id="filtro-brasil">
+              <span class="check-box" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>Só Brasil</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="results-line">
+          <span id="resultado-info">Mostrando 8 jogos</span>
+          <span class="results-hint">Clique em um canal para filtrar</span>
+        </div>
+
+        <div class="match-grid" id="lista-jogos" aria-live="polite"></div>
+
+        <div class="empty-state" id="vazio" hidden>
+          <span class="empty-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"/><path d="M9 15.5c.8-1.2 1.8-1.8 3-1.8s2.2.6 3 1.8M9.5 9.5h.01M14.5 9.5h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </span>
+          <h3>Nenhum jogo encontrado</h3>
+          <p>Tente combinar outros filtros ou veja a agenda completa.</p>
+          <button type="button" class="btn btn-ghost" id="limpar-filtros">Limpar filtros</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section channels-section" id="canais" aria-labelledby="titulo-canais">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-heading">
+            <span class="eyebrow">Onde assistir</span>
+            <h2 class="section-title" id="titulo-canais">Canais de hoje</h2>
+            <p class="section-sub">Toque em um canal para ver só os jogos que ele transmite.</p>
+          </div>
+          <span class="channels-total" id="canais-total"><strong>7</strong> canais na grade</span>
+        </div>
+        <div class="channel-grid" id="lista-canais"></div>
+        <p class="channels-note">
+          A programação pode variar por operadora e região. Os horários seguem o fuso de Brasília (UTC−3).
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a class="brand" href="#inicio" aria-label="Placar — voltar ao início">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M12 7.2l4.3 3.1-1.6 5H9.3l-1.6-5L12 7.2Z" fill="currentColor"/>
+                <path d="M12 3v4.2M3.6 9.2l4.1 1.1M20.4 9.2l-4.1 1.1M6.7 19.1l2.6-3.8M17.3 19.1l-2.6-3.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="brand-copy">
+              <span class="brand-title">Placar<span>.</span></span>
+              <span class="brand-sub">Agenda do futebol</span>
+            </span>
+          </a>
+          <p class="footer-tagline">O dia inteiro do futebol em um só lugar.<br>Feito para quem não perde um jogo.</p>
+        </div>
+        <div class="footer-columns">
+          <div class="footer-col">
+            <h4>Navegue</h4>
+            <a href="#agenda">Jogos de hoje</a>
+            <a href="#canais">Onde assistir</a>
+            <a href="#inicio">Voltar ao topo</a>
+          </div>
+          <div class="footer-col">
+            <h4>Agenda</h4>
+            <p>Terça-feira<br>3 de novembro de 2026</p>
+            <p>Horário de Brasília (UTC−3)</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Placar. Conteúdo informativo, sem vínculo com clubes ou emissoras.</span>
+        <span>Programação sujeita a alterações. Dados do dia 03/11/2026.</span>
+      </div>
+      <p class="footer-disclaimer">
+        Agenda de 3 de novembro de 2026, compilada a partir de fontes públicas de programação esportiva. Jogos, horários e canais podem ser atualizados no arquivo <code>dados.js</code>.
+      </p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span id="toast-text">Pronto!</span>
+  </div>
+
+  <script src="dados.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
