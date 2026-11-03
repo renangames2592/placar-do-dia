@@ -1,5 +1,7 @@
 # Placar. — Jogos de Hoje
 
+🌐 **Site online:** https://renangames2592.github.io/placar-do-dia/
+
 Site de agenda esportiva com banner rotativo, horários, estádios, competições e canais de transmissão dos jogos do dia. A versão atual traz a programação de **terça-feira, 3 de novembro de 2026**, com foco em times brasileiros.
 
 ## Como abrir
